@@ -1,7 +1,12 @@
 # Logs
 logs
 *.log
-npm-debug.log*
+
+# Swp files
+**/*.swp
+
+# HTML builds
+views/*.html
 
 # Runtime data
 pids
@@ -24,10 +29,22 @@ coverage
 build/Release
 
 # Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-# Optional npm cache directory
-.npm
+# Mac dot files
+**/.DS_Store
 
-# Optional REPL history
-.node_repl_history
+# Vagrant dot files
+.vagrant/*
+
+# SSL Keys
+**/*.key
+
+# Node Debug Logs
+npm-debug.log
+
+# Mailgun/Twilio credentials
+config/credentials.js
+# Secrets
+config/secrets.js

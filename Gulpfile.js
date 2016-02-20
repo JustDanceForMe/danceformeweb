@@ -1,0 +1,37 @@
+(function () {
+	'use strict';
+
+	var gulp = require('gulp');
+	var sass = require('gulp-sass');
+	var jshint = require('gulp-jshint');
+	var jscs = require('gulp-jscs');
+
+	gulp.task('lint', function () {
+		return gulp.src([
+
+			// './build_scripts/**/*.js',
+			'./config/**/*.js',
+			'./models/**/*.js',
+			'./routes/**/*.js',
+			'./*.js',
+		])
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
+		.pipe(jscs())
+		.pipe(jscs.reporter())
+		.pipe(jscs.reporter('fail'));
+	});
+
+	gulp.task('scss', function () {
+		gulp.src('./public/scss/**/*.scss')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(gulp.dest('./public/css'));
+	});
+
+	gulp.task('scss:watch', function () {
+		gulp.watch('./public/scss/**/*.scss', ['scss']);
+	});
+
+	gulp.task('default', ['lint', 'scss', 'scss:watch']);
+	gulp.task('deploy', ['lint', 'scss']);
+})();
