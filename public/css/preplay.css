@@ -1,0 +1,17 @@
+#htmlwrapper h2 {
+  text-align: center;
+  color: #525564; }
+
+#htmlwrapper input, #htmlwrapper button {
+  margin-top: 10px; }
+
+#htmlwrapper button {
+  background-color: #C25B56;
+  border-color: #b14a45;
+  color: #f7f7f7; }
+  #htmlwrapper button:hover {
+    background-color: #b14a45; }
+
+#htmlwrapper form {
+  max-width: 300px;
+  margin: auto; }

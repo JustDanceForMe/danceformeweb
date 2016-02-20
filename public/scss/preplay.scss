@@ -1,0 +1,25 @@
+
+@import 'mixins';
+@import 'variables';
+
+#htmlwrapper {
+    h2 {
+        text-align: center;
+		color: $fg-color-dark;
+    }
+    input, button {
+        margin-top: 10px;
+    }
+    button {
+		background-color: $fg-color-light;
+		border-color: $fg-color-light-hover;
+		color: $white-color-hover;
+        &:hover {
+    		background-color: $fg-color-light-hover;
+        }
+    }
+    form {
+        max-width: 300px;
+        margin: auto;
+    }
+}
