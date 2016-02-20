@@ -2,5 +2,8 @@
 'use strict';
 
 module.exports = {
-	// TODO: Add defaults
+	// firebase: 'TODO',
+	sessionSecret: 'MAKE_THIS_RANDOM',
+	userId: 'MAKE_THIS_RANDOM', // Only the demo user exists
+	password: 'DEFAULT_PASSWORD', // Demo user password
 };
