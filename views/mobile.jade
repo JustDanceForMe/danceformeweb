@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='https://code.jquery.com/jquery-2.2.0.min.js')
+    script(src='javascripts/test.js')
+  body
+   h1 Accelerometer
+
+   p ax: #[ax ax]
+   hr
+   p ay: #[ay ay]
+   hr
+   p az: #[az az]
+   hr
+   p arAlpha: #[arAlpha arAlpha]
+   hr
+   p arBeta: #[arBeta arBeta]
+   hr
+   p arGamma: #[arGamma arGamma]
+
+   br
+
+   h1 Gyroscope
+   p calibration parameters: #[abg alpha: 0 / beta: 0 / gamma: 0]
+   hr
+   p alpha: #[alpha alpha]
+   hr
+   p beta: #[beta beta]
+   hr
+   p gamma: #[gamma gamma]
+   br
+   br
+   buttom(type='button', id='cal', style='background: #000; color: #fff; padding: 20px 30px') Calibrate
+   buttom(type='button', id='reset', style='display: none; background: #000; color: #fff; padding: 20px 30px') Reset
+
+   br
+   br
+   br
+
+   h1 Camera
+
+   p Image
+   input(type='file', accept='image/*', capture='camera')
+   hr
+   p Video
+   input(type='file', accept='video/*', capture='camera')

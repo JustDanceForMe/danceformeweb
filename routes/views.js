@@ -53,4 +53,8 @@ router.renderPlay = function (req, res) {
 	});
 };
 
+router.renderMobile = function (req, res) {
+	res.render('mobile.jade', {});
+};
+
 module.exports = router;
