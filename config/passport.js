@@ -3,8 +3,8 @@
 
 var LocalStrategy = require('passport-local').Strategy;
 
-var secrets = require('../config/secrets');
-console.log('Loading passport');
+var credentials = require('../config/credentials');
+
 module.exports = function (passport) {
 
 	// =========================================================================
@@ -22,7 +22,7 @@ module.exports = function (passport) {
 	// used to deserialize the user
 	passport.deserializeUser(function (id, done) {
 		console.log('DeSerializing');
-		done(null, { id: secrets.userId });
+		done(null, { id: credentials.userId });
 	});
 
 	// =========================================================================
@@ -43,8 +43,8 @@ module.exports = function (passport) {
 
 		// For the purposes of demoing, only need one verified login
 		if (email === 'demo@justdancefor.me' &&
-			password === secrets.password) {
-			return done(null, { id: secrets.userId });
+			password === credentials.password) {
+			return done(null, { id: credentials.userId });
 		} else {
 			req.session.submission = req.body;
 			return done(null, false, req.flash('loginFlash', {

@@ -13,7 +13,7 @@ var passport = require('passport');
 var session = require('express-session');
 var configDB = require('./config/database.js');
 var flash    = require('connect-flash');
-var secrets = require('./config/secrets');
+var credentials = require('./config/credentials');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
 // required for passport
-app.use(session({ secret: secrets.sessionSecret }));
+app.use(session({ secret: credentials.sessionSecret }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
