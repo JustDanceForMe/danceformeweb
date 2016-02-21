@@ -20,7 +20,7 @@ h1 {
 	font-size: 70px;
 }
 
-#cal, #ready {
+#cal, #ready, #stop {
 	text-align: center;
 	padding: 100px 200px;
 	font-size: 100px;

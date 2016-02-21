@@ -57,4 +57,8 @@ router.renderMobile = function (req, res) {
 	res.render('mobile.jade', {});
 };
 
+router.renderTrain = function (req, res) {
+	res.render('train.jade', {});
+};
+
 module.exports = router;
