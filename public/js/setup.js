@@ -16,7 +16,7 @@ $(function() {
                 var username = $('#username').val();
 
                 // Insert the new profile data
-                fbaseRoot.child("users").child(authData.uid).set({
+                fbaseRoot.child("users").child(authData.uid).update({
                     username: username,
                 }, function(error) {
                     if (error) {
