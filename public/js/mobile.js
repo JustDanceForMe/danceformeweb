@@ -141,6 +141,7 @@ $(function() {
         }
         console.log('authenticated');
         console.log(authData);
+        var laptopUID;
         // link to computer
         $('#link').on('click', function() {
             console.log('Clicked link');
@@ -151,6 +152,7 @@ $(function() {
                 fbaseRoot.child('authCodes').child(code).once('value', function(snapshot) {
                     // If code has been entered
                     if(snapshot.exists()) {
+                        laptopUID = snapshot.val().laptop;
                         fbaseRoot.child('authCodes').child(code).update({
                             mobile: authData.uid
                         }, function() {
@@ -165,9 +167,18 @@ $(function() {
         });
 
     	// ready to start the game
-    	$('#ready').click(function() {
+    	$('#ready').on('click', function() {
+            console.log('Clicked ready');
     		// access firebase and synchronize beginning
-
+            if(laptopUID) {
+                $(this).text('You are marked ready.');
+                console.log(authData.uid);
+                console.log(laptopUID);
+                fbaseRoot.child('users').child(laptopUID).child('ready').set(true, function(snapshot) {
+                    console.log('Marked ready');
+                    console.log(snapshot.val());
+                });
+            }
     	});
     });
 });

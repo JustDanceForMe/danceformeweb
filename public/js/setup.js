@@ -14,20 +14,21 @@ $(function() {
             $('form').on('submit', function(event) {
                 // Grab the username
                 var username = $('#username').val();
-
-                // Insert the new profile data
-                fbaseRoot.child("users").child(authData.uid).update({
-                    username: username,
-                }, function(error) {
-                    if (error) {
-                        alert('An error occurred while joining the game. ' +
-                            '(See console for details.)');
-                        console.error(error);
-                    } else {
-                        // Write username to firebase, redirect to /play
-                        window.location.href = '/play';
-                    }
-                });
+                if(username) {
+                    // Insert the new profile data
+                    fbaseRoot.child("users").child(authData.uid).update({
+                        username: username,
+                    }, function(error) {
+                        if (error) {
+                            alert('An error occurred while joining the game. ' +
+                                '(See console for details.)');
+                            console.error(error);
+                        } else {
+                            // Write username to firebase, redirect to /play
+                            window.location.href = '/play';
+                        }
+                    });
+                }
 
                 event.preventDefault();
             });
