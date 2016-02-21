@@ -20,16 +20,16 @@ var epsilon = 3.0;
 var firebase = new Firebase('https://dancegesture.firebaseio.com/');
 
 // apply geometric correction to the acceleration values
-function coordinateTransformation(accel) {
-	sin = numeric.sin;
-	cos = numeric.cos;
+// function coordinateTransformation(accel) {
+// 	sin = numeric.sin;
+// 	cos = numeric.cos;
 
-	invR = [[cos(alpha) * cos(beta), 										sin(alpha) * cos(beta), 										-1 * sin(beta)],
-			[cos(alpha) * sin(beta) * sin(gamma) - sin(alpha) * cos(gamma), sin(alpha) * sin(beta) * sin(gamma) + cos(alpha) * cos(gamma), 	cos(beta) * sin(gamma)],
-			[cos(alpha) * sin(beta) * cos(gamma) + sin(alpha) * sin(gamma), sin(alpha) * sin(beta) * cos(gamma) - cos(alpha) * sin(gamma), 	cos(beta) * cos(gamma)]];
+// 	invR = [[cos(alpha) * cos(beta), 										sin(alpha) * cos(beta), 										-1 * sin(beta)],
+// 			[cos(alpha) * sin(beta) * sin(gamma) - sin(alpha) * cos(gamma), sin(alpha) * sin(beta) * sin(gamma) + cos(alpha) * cos(gamma), 	cos(beta) * sin(gamma)],
+// 			[cos(alpha) * sin(beta) * cos(gamma) + sin(alpha) * sin(gamma), sin(alpha) * sin(beta) * cos(gamma) - cos(alpha) * sin(gamma), 	cos(beta) * cos(gamma)]];
 
-	return numeric.dot(invR, accel);
-}
+// 	return numeric.dot(invR, accel);
+// }
 
 // initialize page and begin sensor calibration
 function init() {
