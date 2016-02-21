@@ -20,7 +20,7 @@ block content
                     h2 Leaderboard
             .row
                 .col-md-4.player
-                    each val, index in ['COLIN', 'SEAN', 'YOONSHIK', 'ISHAAN']
+                    each val, index in ['PLAYER 1', 'PLAYER 2', 'PLAYER 3', 'PLAYER 4']
                         .row(class='player' + (index + 1))
                             .col-md-5.photo
                                 p.place= (index + 1)
@@ -30,7 +30,7 @@ block content
                                 .name
                                     p= val
                                 .score
-                                    p 12345 - 2x
+                                    p 0 - 1x
                         
         video#video(controls, preload='auto')
             source(src='http://1473967895.rsc.cdn77.org/data/roar.mp4', type='video/mp4')

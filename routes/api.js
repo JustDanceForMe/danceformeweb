@@ -6,7 +6,19 @@ var router = express.Router();
 var fs = require('fs');
 var videoPath = 'public/data/roar.mp4';
 var Firebase = require('firebase');
+var credentials = require('../config/credentials');
 var fbaseRoot = new Firebase('https://justdanceforme.firebaseio.com/');
+var FirebaseTokenGenerator = require('firebase-token-generator');
+var tokenGenerator = new FirebaseTokenGenerator(credentials.firebase);
+var token = tokenGenerator.createToken({ uid: '1', isServer: true });
+fbaseRoot.authWithCustomToken(token, function (error, authData) {
+	if (error) {
+		console.log('Login Failed!', error);
+	} else {
+		console.log('Login Succeeded!', authData);
+	}
+});
+
 /*
  * GET Requests
  */
@@ -50,8 +62,20 @@ router.startGame = function (req, res) {
 	// Initialize the game state to the beginning of a game
 	var startTime = (Math.floor(new Date() / 1000) + 5) * 1000;
 
+	var msUntilGameStart = new Date(startTime).getTime() - new Date().getTime();
+	console.log('Starting game in: ' + msUntilGameStart + 'ms.');
+	setTimeout(function () {
+		fbaseRoot.child('gameState').update({
+			running: true,
+			starting: false,
+		}, function () {
+			console.log('updated running state to true');
+		});
+	}, msUntilGameStart);
+
 	fbaseRoot.child('gameState').set({
-		running: true,
+		starting: true,
+		running: false,
 		startTime: startTime,
 		song: 'Roar',
 	}, function (error) {
@@ -62,6 +86,18 @@ router.startGame = function (req, res) {
 			res.end();
 		}
 	});
+
+	// var hasStarted = false;
+	// fbaseRoot.child('users').on('value', function (snapshot) {
+	// 	if (hasStarted === false) {
+	// 		var n_ready = 0;
+	// 		snapshot.forEach(function (user) {
+	// 			if (user.ready === true) {
+	// 				n_ready++;
+	// 			}
+	// 		});
+	// 	}
+	// });
 };
 
 router.stopGame = function (req, res) {
@@ -75,6 +111,10 @@ router.stopGame = function (req, res) {
 			res.end();
 		}
 	});
+
+	fbaseRoot.child('authCodes').remove();
+
+	// fbaseRoot.child('users').remove();
 };
 
 router.logout = function (req, res) {
