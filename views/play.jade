@@ -3,7 +3,9 @@ extends layout
 block styles
   // Login page style
   link(href='/css/play.css', rel='stylesheet')
-
+  
 block content
   include flash
-  h2 Testing Auto-push v2!
+  
+  video(controls)
+    source(src='/stream', type='video/mp4')
