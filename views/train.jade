@@ -8,7 +8,7 @@ html
   body
      div(class='container')
         div(class='calibration')
-           h1(id='title', class='animated tada') Just DANCE for me      
+           h1(id='title', class='animated tada') Just DANCE for me (Training)      
            h1(id='calibration') Please put down your phone on a flat surface
 
            p(style='margin-top: 50px') ax: #[ax ax]
@@ -21,14 +21,13 @@ html
            hr
            p beta: #[beta beta]
            hr
-           p(style='margin-bottom: 200px;') gamma: #[gamma gamma]
+           p(style='margin-bottom: 100px;') gamma: #[gamma gamma]
            br
            buttom(type='button', id='cal') CALIBRATE
            buttom(type='button', id='ready', style='display: none;') Ready
-
-           audio(id='lost', src='../data/no.mp3', preload)
+           buttom(type='button', id='stop', style='display: none;') Stop
 
    script(src='https://code.jquery.com/jquery-2.2.0.min.js')
    script(src='http://numericjs.com/numeric/lib/numeric-1.2.6.min.js')
    script(src='https://cdn.firebase.com/js/client/2.4.1/firebase.js')
-   script(src='../js/mobile.js')
+   script(src='../js/train.js')

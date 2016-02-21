@@ -1,0 +1,34 @@
+body {
+	font-family: 'Helvetica';
+	font-weight: 100;
+}
+
+h1 {
+	font-weight: 200;
+}
+
+#title {
+	font-family: 'Life Savers', cursive;
+	text-align: center;
+	font-size: 100px;
+}
+
+#calibration {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 150px;
+	font-size: 70px;
+}
+
+#cal, #ready, #stop {
+	text-align: center;
+	padding: 100px 200px;
+	font-size: 100px;
+	background: #000;
+	color: #fff;
+}
+
+.container {
+	margin-top: 50px;
+	text-align: center;
+}

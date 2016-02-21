@@ -69,6 +69,7 @@ app.get('/connect', isLoggedIn, views.renderConnect);
 app.get('/setup', isLoggedIn, views.renderSetup);
 app.get('/play', isLoggedIn, views.renderPlay);
 app.get('/mobile', views.renderMobile);
+app.get('/train', views.renderTrain);
 app.get('/stream', api.streamVideo);
 
 // Convenience method
