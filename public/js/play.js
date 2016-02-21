@@ -28,8 +28,10 @@ $(function() {
                 console.log(gameState);
                 if (hasStarted === false && gameState.running === true) {
                     hasStarted = gameState.running;
+
                     // Set up callback to show count-down
                     // TODO
+
                     console.log('Preparing game start.');
 
                     // Set up a callback to start the video
@@ -39,30 +41,31 @@ $(function() {
                     console.log(msUntilGameStart);
                     console.log('Starting game in: ' + msUntilGameStart + 'ms.');
                     setTimeout(function() {
-                        // alert('Start!!!');
                         var video = $('video')[0];
-                        console.log(video);
                         video.play();
+                        console.log('Starting now!');
+                        console.log(video);
                     }, msUntilGameStart);
                 }
             });
 
-            $('video').on('progress', function() {
-                var range = 0;
-                var bf = this.buffered;
-                var time = this.currentTime;
-
-                while(!(bf.start(range) <= time && time <= bf.end(range))) {
-                    range += 1;
-                }
-                var loadStartPercentage = bf.start(range) / this.duration;
-                var loadEndPercentage = bf.end(range) / this.duration;
-                var loadPercentage = loadEndPercentage - loadStartPercentage;
-                console.log(loadPercentage);
-            });
-
             // Subscribe to the users data, to update the scoreboard
             // TODO
+
+            // Track buffering progress
+            // $('video').on('progress', function() {
+            //     var range = 0;
+            //     var bf = this.buffered;
+            //     var time = this.currentTime;
+            //
+            //     while(!(bf.start(range) <= time && time <= bf.end(range))) {
+            //         range += 1;
+            //     }
+            //     var loadStartPercentage = bf.start(range) / this.duration;
+            //     var loadEndPercentage = bf.end(range) / this.duration;
+            //     var loadPercentage = loadEndPercentage - loadStartPercentage;
+            //     console.log(loadPercentage);
+            // });
         }
     });
 
