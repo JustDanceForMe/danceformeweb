@@ -15,8 +15,6 @@ router.renderLogin = function (req, res) {
 		req.session.submission = null;
 	}
 
-	console.log('Rending login');
-
 	res.render('login.jade', {
 		title: 'Login',
 		messages: req.flash('loginFlash'),

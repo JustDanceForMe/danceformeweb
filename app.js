@@ -11,9 +11,9 @@ var api = require('./routes/api');
 var app = express();
 var passport = require('passport');
 var session = require('express-session');
-var configDB = require('./config/database.js');
 var flash    = require('connect-flash');
 var credentials = require('./config/credentials');
+var DEV_MODE = true;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,8 +46,7 @@ require('./config/passport.js')(passport); // pass passport for configuration
 // middleware to ensure the user is authenticated.
 // If not, redirect to login page.
 function isLoggedIn(req, res, next) {
-	console.log('Verifying logged in');
-	if (req.isAuthenticated()) {
+	if (req.isAuthenticated() || DEV_MODE === true) {
 		return next();
 	} else {
 		res.redirect('/login');
@@ -56,9 +55,8 @@ function isLoggedIn(req, res, next) {
 
 // middleware to redirect the user to the dashboard if they already logged in
 function isNotLoggedIn(req, res, next) {
-	console.log('Verifying not logged in');
-	if (req.isAuthenticated()) {
-		res.redirect('/play'); // TODO: redirect to connect
+	if (req.isAuthenticated() || DEV_MODE === true) {
+		res.redirect('/connect');
 	} else {
 		return next();
 	}
@@ -73,12 +71,18 @@ app.get('/play', isLoggedIn, views.renderPlay);
 app.get('/mobile', views.renderMobile);
 app.get('/stream', api.streamVideo);
 
+// Convenience method
+app.get('/logout', isLoggedIn, api.logout);
+
 app.post('/api/login', passport.authenticate('local-login', {
-	successRedirect: '/play',
+	successRedirect: '/connect',
 	failureRedirect: '/login',
 	failureFlash: true,
 }));
 app.post('/api/logout', isLoggedIn, api.logout);
+
+app.post('/api/start', isLoggedIn, api.startGame);
+app.post('/api/stop', isLoggedIn, api.stopGame);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

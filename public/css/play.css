@@ -1,3 +1,6 @@
+#htmlwrapper body {
+  background-color: #000; }
+
 #htmlwrapper .container-fluid {
   padding: 0; }
 

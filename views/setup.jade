@@ -6,4 +6,13 @@ block styles
 
 block content
   include flash
-  h2= title
+  
+  .contentWrapper
+    h2 Create a User to Play
+    form
+        label(for='#username') Display Name
+        input.form-control#username(type='text', placeholder='Hannah', required='', name = 'username', value=submission.username, autofocus)
+        button#submitInfo.submit-btn.btn.btn-lg.btn-default.btn-block(type='submit') Join Game
+
+block scripts
+    script(src='/js/setup.js')

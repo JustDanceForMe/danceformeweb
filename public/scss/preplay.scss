@@ -4,11 +4,13 @@
 
 #htmlwrapper {
     h2 {
-        text-align: center;
 		color: $fg-color-dark;
     }
     input, button {
         margin-top: 10px;
+    }
+    p {
+        margin-top: 20px;
     }
     button {
 		background-color: $fg-color-light;
@@ -18,8 +20,9 @@
     		background-color: $fg-color-light-hover;
         }
     }
-    form {
-        max-width: 300px;
+    .contentWrapper {
+        max-width: 400px;
         margin: auto;
+        text-align: center;
     }
 }

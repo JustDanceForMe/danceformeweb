@@ -3,6 +3,9 @@
 @import 'variables';
 
 #htmlwrapper {
+    body {
+        background-color: #000;
+    }
     .container-fluid {
         padding: 0;
     }

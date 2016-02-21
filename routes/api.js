@@ -5,7 +5,8 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var videoPath = 'public/data/roar.mp4';
-
+var Firebase = require('firebase');
+var fbaseRoot = new Firebase('https://justdanceforme.firebaseio.com/');
 /*
  * GET Requests
  */
@@ -45,13 +46,48 @@ router.streamVideo = function (req, res) {
  * POST Requests
  */
 
+router.startGame = function (req, res) {
+	// Initialize the game state to the beginning of a game
+	var startTime = (Math.floor(new Date() / 1000) + 5) * 1000;
+
+	fbaseRoot.child('gameState').set({
+		running: true,
+		startTime: startTime,
+		song: 'Roar',
+	}, function (error) {
+		if (error) {
+			throw error;
+		} else {
+			console.log('Started game.');
+			res.end();
+		}
+	});
+};
+
+router.stopGame = function (req, res) {
+	fbaseRoot.child('gameState').set({
+		running: false,
+	}, function (error) {
+		if (error) {
+			throw error;
+		} else {
+			console.log('Ended game.');
+			res.end();
+		}
+	});
+};
+
 router.logout = function (req, res) {
 	req.logout();
 	req.flash('loginFlash', {
 		text: 'You have been logged out.',
 		class: 'success',
 	});
-	res.end(JSON.stringify({ redirect: '/login' }));
+	if (req.method == 'GET') {
+		res.redirect('/login');
+	} else {
+		res.end(JSON.stringify({ redirect: '/login' }));
+	}
 };
 
 module.exports = router;

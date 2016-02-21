@@ -7,14 +7,14 @@ block styles
 block content
   .row
     .col-xs-8.col-xs-offset-2.col-sm-8.col-sm-offset-2.col-md-4.col-md-offset-4
-        form(action='/api/login', method='post')
+        form.contentWrapper(action='/api/login', method='post')
           h2.form-signin-heading
             p Login
 
           include flash
 
-          label.sr-only(for='inputEmail') Email address
-          input#inputEmail.form-control(type='email', placeholder='Email address', required='', autofocus='', name = 'email', value='demo@justdancefor.me')
+          label.sr-only.hidden(for='inputEmail') Email address
+          input#inputEmail.form-control.hidden(type='email', placeholder='Email address', required='', autofocus='', name = 'email', value='demo@justdancefor.me')
           label.sr-only(for='inputPassword') Password
           input#inputPassword.form-control(type='password', placeholder='Password', required='', name = 'password', value=submission.password, autofocus)
           button#submitInfo.submit-btn.btn.btn-lg.btn-default.btn-block(type='submit') Sign in

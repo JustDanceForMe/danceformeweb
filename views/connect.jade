@@ -5,5 +5,25 @@ block styles
   link(href='/css/preplay.css', rel='stylesheet')
 
 block content
-  include flash
-  h2= title
+    include flash
+    
+    .row
+        .contentWrapper
+            h2 Connect your Phone
+            p Browse to 
+                span
+                    a(href='http://justdancefor.me/mobile') justdancefor.me/mobile 
+                span and scan the following QR code to sync your current session.
+            p.loadingQrCode
+                span
+                    em Loading...
+            #qrCode
+        form(enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="POST")
+            input(type="hidden" name="MAX_FILE_SIZE" value="1048576")
+            p Choose QR code image to read/scan:
+            input(name="file" type="file")
+            input(type="submit" value="Read QR code")
+
+block scripts
+    script(src='/js/jquery.qrcode-0.12.0.js')
+    script(src='/js/connect.js')
