@@ -52,8 +52,6 @@ function init() {
 			if (a[2] > maxX) {
 				maxZ = a[2];
 			}
-
-
 		}
 
 		window.ondeviceorientation = function(event) {
@@ -71,24 +69,49 @@ function init() {
 			cal[1] = Number($('beta').text());
 			cal[2] = Number($('gamma').text());
 
-			$('abg').text('alpha: ' + cal[0] + ' / beta: ' + cal[1] + ' / gamma: ' + cal[2]);
 			$(this).css('display', 'none');
-			$('#reset').css('display', 'inline');			
+			$('#ready').css('display', 'inline');			
 		});
 
-		$('#reset').click(function() {
-			cal = [0, 0, 0];
-
-			$('abg').text('alpha: 0 / beta: 0 / gamma: 0');
-			$(this).css('display', 'none');
-			$('#cal').css('display', 'inline');
-		});
 	}
 }
 
+
 $(function() {
 	init();
+	// var rawCode = document.getElementById('file');
 
-	
-	
+	// rawCode.addEventListener('change', processQR, false);
+
+	// // qrcode.callback = (function(data) {
+	// // 	alert(data);
+	// // });
+
+	// function processQR() {
+	// 	var formData = new FormData();
+	// 	formData.append('MAX_FILE_SIZE', '1048576');
+	// 	formData.append('file', rawCode.files[0])
+
+	// 	$.ajax({
+ //            type: 'POST',
+ //            contentType: 'multipart/form-data',
+ //            url: 'http://api.qrserver.com/v1/read-qr-code/',
+ //            data: formData,
+ //            processData: false,
+ //            success: function(response, textStatus, jqXHR) {
+ //                console.log(response);
+ //            }
+ //        });
+
+	// 	// var reader = new FileReader();
+	// 	// reader.onload = (function(image) {
+	// 	// 	return function(e) {
+	// 	// 		qrcode.decode(e.target.result);
+	// 	// 	}
+	// 	// })(file);
+
+	// 	// reader.readAsDataURL(file);
+
+
+	// }
 });

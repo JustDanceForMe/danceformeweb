@@ -70,7 +70,7 @@ app.get('/login', isNotLoggedIn, views.renderLogin);
 app.get('/connect', isLoggedIn, views.renderConnect);
 app.get('/setup', isLoggedIn, views.renderSetup);
 app.get('/play', isLoggedIn, views.renderPlay);
-app.get('/mobile/:token', views.renderMobile);
+app.get('/mobile', views.renderMobile);
 app.get('/stream', api.streamVideo);
 
 app.post('/api/login', passport.authenticate('local-login', {
