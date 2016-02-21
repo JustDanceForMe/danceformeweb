@@ -47,6 +47,20 @@ $(function() {
                 }
             });
 
+            $('video').on('progress', function() {
+                var range = 0;
+                var bf = this.buffered;
+                var time = this.currentTime;
+
+                while(!(bf.start(range) <= time && time <= bf.end(range))) {
+                    range += 1;
+                }
+                var loadStartPercentage = bf.start(range) / this.duration;
+                var loadEndPercentage = bf.end(range) / this.duration;
+                var loadPercentage = loadEndPercentage - loadStartPercentage;
+                console.log(loadPercentage);
+            });
+
             // Subscribe to the users data, to update the scoreboard
             // TODO
         }
