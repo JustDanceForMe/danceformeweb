@@ -133,10 +133,7 @@ $(function() {
 		// 	tempY = bufferY.shift();
 		// 	tempZ = bufferZ.shift();
 
-
 		// }, 1000);
-=======
->>>>>>> 70a4c50472e43d19b39cdda099ad4904f4046d3b
 
     fbaseRoot.authAnonymously(function(error, authData) {
         if(error) {
