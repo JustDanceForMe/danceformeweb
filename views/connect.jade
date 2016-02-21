@@ -5,5 +5,19 @@ block styles
   link(href='/css/preplay.css', rel='stylesheet')
 
 block content
-  include flash
-  h2= title
+    include flash
+    
+    .row
+        .contentWrapper
+            h2 Connect your Phone
+            p Browse to 
+                span
+                    a(href='http://justdancefor.me/mobile') justdancefor.me/mobile 
+                span and enter the following authentication code to register 
+                | your phone with this laptop.
+            h1.number 
+                span
+                    em Loading...
+
+block scripts
+    script(src='/js/connect.js')

@@ -1,9 +1,11 @@
 #htmlwrapper h2 {
-  text-align: center;
   color: #525564; }
 
 #htmlwrapper input, #htmlwrapper button {
   margin-top: 10px; }
+
+#htmlwrapper p {
+  margin-top: 20px; }
 
 #htmlwrapper button {
   background-color: #C25B56;
@@ -12,6 +14,7 @@
   #htmlwrapper button:hover {
     background-color: #b14a45; }
 
-#htmlwrapper form {
-  max-width: 300px;
-  margin: auto; }
+#htmlwrapper .contentWrapper {
+  max-width: 400px;
+  margin: auto;
+  text-align: center; }

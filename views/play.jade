@@ -5,7 +5,35 @@ block styles
   link(href='/css/play.css', rel='stylesheet')
   
 block content
-  include flash
-  
-  video(controls)
-    source(src='/stream', type='video/mp4')
+    include flash
+    
+    #blocker
+    #blocker2
+    
+    .row#scoreboardBackground
+        .col-md-3
+    
+    .gameWrapper
+        .scoreboard
+            .row
+                .col-md-3#leaderboard
+                    h2 Leaderboard
+            .row
+                .col-md-4.player
+                    each val, index in ['COLIN', 'SEAN', 'YOONSHIK', 'ISHAAN']
+                        .row(class='player' + (index + 1))
+                            .col-md-5.photo
+                                p.place= (index + 1)
+                                //- .fill
+                                    //- img.face(src='http://thecatapi.com/api/images/get?format=src&type=gif')
+                            .col-md-7.namecard
+                                .name
+                                    p= val
+                                .score
+                                    p 12345 - 2x
+                        
+        video#video(controls, preload='auto')
+            source(src='http://1473967895.rsc.cdn77.org/data/roar.mp4', type='video/mp4')
+
+block scripts
+    script(src='/js/play.js')

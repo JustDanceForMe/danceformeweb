@@ -1,34 +1,63 @@
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css')
-    link(href='https://fonts.googleapis.com/css?family=Life+Savers:400,700' rel='stylesheet' type='text/css')
-    link(rel='stylesheet', href='../css/mobile.css')
-  body
-     div(class='container')
-        div(class='calibration')
-           h1(id='title', class='animated tada') Just DANCE for me      
-           h1(id='calibration') Please put down your phone on a flat surface
+extends layout
 
-           p(style='margin-top: 50px') ax: #[ax ax]
-           hr
-           p ay: #[ay ay]
-           hr
-           p az: #[az az]
-           hr
-           p alpha: #[alpha alpha]
-           hr
-           p beta: #[beta beta]
-           hr
-           p(style='margin-bottom: 200px;') gamma: #[gamma gamma]
-           br
-           buttom(type='button', id='cal') CALIBRATE
-           buttom(type='button', id='ready', style='display: none;') Ready
+block styles
+  link(href='/css/preplay.css', rel='stylesheet')
+  link(href='/css/mobile.css', rel='stylesheet')
+  
+block content
+    include flash
+    
+    .contentWrapper
+        h2 Link and Setup your Phone
+        .calibration
+            p Please place your phone on a flat surface, then press 'Calibrate'.
+            .calibration-data
+                p ax: #[ax ax]
+                p ay: #[ay ay]
+                p az: #[az az]
+                p alpha: #[alpha alpha]
+                p beta: #[beta beta]
+                p gamma: #[gamma gamma]
+            button.btn.btn-lg.btn-default#calibrate Calibrate
+        .link
+            p Enter the authentication code from your computer below.
+            input.form-control#authCode(placeholder='1234')
+            button.btn.btn-lg.btn-default.disabled#link Link
+        .ready
+            p When you are ready to begin, click below.
+            button.btn.btn-lg.btn-danger.disabled#ready Ready
+block scripts
+    script(src='http://numericjs.com/numeric/lib/numeric-1.2.6.min.js')
+    script(src='/js/mobile.js')
 
-           audio(id='lost', src='../data/no.mp3', preload)
-
-   script(src='https://code.jquery.com/jquery-2.2.0.min.js')
-   script(src='http://numericjs.com/numeric/lib/numeric-1.2.6.min.js')
-   script(src='https://cdn.firebase.com/js/client/2.4.1/firebase.js')
-   script(src='../js/mobile.js')
+//- doctype html
+//- html
+//-   head
+//-     title= title
+//-     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css')
+//-     link(href='https://fonts.googleapis.com/css?family=Life+Savers:400,700' rel='stylesheet' type='text/css')
+//-     link(rel='stylesheet', href='../css/mobile.css')
+//-   body
+//-      div(class='container')
+//-         div(class='calibration')
+//-            h1(id='title', class='animated tada') Just DANCE for me      
+//-            h1(id='calibration') Please put down your phone on a flat surface
+//- 
+//-            p(style='margin-top: 50px') ax: #[ax ax]
+//-            hr
+//-            p ay: #[ay ay]
+//-            hr
+//-            p az: #[az az]
+//-            hr
+//-            p alpha: #[alpha alpha]
+//-            hr
+//-            p beta: #[beta beta]
+//-            hr
+//-            p(style='margin-bottom: 200px;') gamma: #[gamma gamma]
+//-            br
+//-            buttom(type='button', id='cal') CALIBRATE
+//-            buttom(type='button', id='ready', style='display: none;') Ready
+//- 
+//-            audio(id='lost', src='../data/no.mp3', preload)
+//- 
+//-    script(src='https://code.jquery.com/jquery-2.2.0.min.js')

@@ -3,6 +3,9 @@
 @import 'variables';
 
 #htmlwrapper {
+    body {
+        background-color: #000;
+    }
     .container-fluid {
         padding: 0;
     }
@@ -10,5 +13,147 @@
         width: 100%;
         height: auto;
         max-height: 100%;
+        max-width: 100%;
+    }
+    .row#scoreboardBackground {
+        position: absolute;
+        top: 0;
+        height: 1000px;
+        border-right: 1px solid white;
+        > div {
+            width: 400px;
+            height: 100%;
+            background-color: #111;
+        }
+    }
+    #blocker {
+        position: absolute;
+        top: 10px;
+        height: 200px;
+        width: 150px;
+        left: 200px;
+        background-color: #111;
+        border-radius: 100px;
+    }
+    #blocker2 {
+        position: absolute;
+        top: 500px;
+        height: 30px;
+        width: 100px;
+        left: 0px;
+        background-color: #111;
+    }
+    .scoreboard {
+        z-index: 1000;
+        position: fixed;
+        top: 30px;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        #leaderboard {
+            margin-bottom: 20px;
+            h2 {
+                text-align: center;
+                color: #e4e4e4;
+                font-weight: 100;
+                font-size: 40px;
+            }
+        }
+        .player > .row {
+            margin: 0;
+            margin-bottom: 40px;
+        }
+        .photo {
+            padding: 0;
+            height: 120px;
+            width: 120px;
+            overflow: hidden;
+            border-radius: 60px;
+            background-color: #666;
+            .face {
+                max-width: 100%;
+            }
+            .color-bg {
+                height: 100%;
+                width: 100%;
+            }
+            .place {
+                font-size: 100px;
+                line-height: 120px;
+                text-align: center;
+            }
+        }
+        .namecard {
+            font-size: 40px;
+            font-weight: 300;
+            .name {
+                color: #d4d4d4;
+                line-height: .5;
+                margin-top: 25px;
+            }
+            .score {
+                font-weight: 600;
+                color: #e4e4e4;
+            }
+        }
+
+        .player1 {
+            .name,
+            .score,
+            .place {
+                color: $player1-color;
+            }
+            .photo {
+                border: 3px solid $player1-color;
+            }
+        }
+        .player2 {
+            .name,
+            .score,
+            .place {
+                color: $player2-color;
+            }
+            .photo {
+                border: 3px solid $player2-color;
+            }
+        }
+        .player3 {
+            .name,
+            .score,
+            .place {
+                color: $player3-color;
+            }
+            .photo {
+                border: 3px solid $player3-color;
+            }
+        }
+        .player4 {
+            .name,
+            .score,
+            .place {
+                color: $player4-color;
+            }
+            .photo {
+                border: 3px solid $player4-color;
+            }
+        }
+    }
+    .gameWrapper {
+        width: 100%;
+        height: 100%;
+        // border: 1px white solid;
+    }
+    .fill {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+        height: 100%;
+    }
+
+    .fill img {
+        flex-shrink:0;
+        min-width:100%;
+        min-height:100%
     }
 }
